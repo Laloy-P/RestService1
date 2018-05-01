@@ -17,7 +17,7 @@ public class FirstRestClass {
 	public String bar2Psi () {
 		Double psi, bar = 20d;
 		psi = bar*14.5038;
-		String result = "20 bar = " + psi + "psi";
+		String result = "20 bar = " + psi + " psi.";
 		return "<service>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
 	}
 	
@@ -31,7 +31,7 @@ public class FirstRestClass {
 		psi = bar*14.5038;
 		DecimalFormat nf = new DecimalFormat("0.##");
 		String s = nf.format(psi);
-		String result = b+"Bar = " + s + "psi";
+		String result = b+" Bar = " + s + " psi.";
 		return "<service>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
 	}
 	
