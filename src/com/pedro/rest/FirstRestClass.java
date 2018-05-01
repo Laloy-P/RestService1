@@ -37,7 +37,7 @@ public class FirstRestClass {
 	
 	public void StartConnection() {
 		System.out.println("-------- PostgreSQL JDBC Connection Starting ------------");
-
+		String adress = "jdbc:postgres://ec2-54-204-46-236.compute-1.amazonaws.com:5432/dc76ph4rg6gg41";
 		try {
 
 			Class.forName("org.postgresql.Driver");
@@ -57,7 +57,7 @@ public class FirstRestClass {
 		try {
 
 			connection = DriverManager.getConnection(
-		/*-Adress-*/"    postgres://ljzaelfiumsxzz:4598492aa5c3c92ecc4a76b2663bcd20ba7b48ce58381da648b82a840d90a4a6@ec2-54-204-46-236.compute-1.amazonaws.com:5432/dc76ph4rg6gg41", 
+		/*-Adress-*/adress, 
 		/*Username*/"ljzaelfiumsxzz",
 		/*Password*/"4598492aa5c3c92ecc4a76b2663bcd20ba7b48ce58381da648b82a840d90a4a6");
 
