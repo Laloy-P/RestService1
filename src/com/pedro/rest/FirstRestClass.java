@@ -17,8 +17,8 @@ public class FirstRestClass {
 	public String bar2Psi () {
 		Double psi, bar = 20d;
 		psi = bar*14.5038;
-		String result = "@Produces(\"application/xml\") Output: \n\n bar to psi Converter Output: \n\n" + psi;
-		return "<service>" + "<bar>" + bar + "</bar>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
+		String result = "20 bar = " + psi + "psi";
+		return "<service>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
 	}
 	
 	@Path("{b}")
@@ -31,8 +31,8 @@ public class FirstRestClass {
 		psi = bar*14.5038;
 		DecimalFormat nf = new DecimalFormat("0.##");
 		String s = nf.format(psi);
-		String result = "@Produces(\"application/xml\") Output: \n\n bar to psi Converter Output: \n\n" + s;
-		return "<service>" + "<bar>" + bar + "</bar>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
+		String result = b+"Bar = " + s + "psi";
+		return "<service>" + "<serviceoutput>" + result + "</serviceoutput>" + "</service>";
 	}
 	
 	public void StartConnection() {
