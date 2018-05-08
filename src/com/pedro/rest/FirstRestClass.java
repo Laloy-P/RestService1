@@ -1,5 +1,7 @@
 package com.pedro.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -56,17 +58,16 @@ public class FirstRestClass {
 
 		try {
 
-			connection = DriverManager.getConnection(
-		/*-Adress-*/adress, 
-		/*Username*/"ljzaelfiumsxzz",
-		/*Password*/"4598492aa5c3c92ecc4a76b2663bcd20ba7b48ce58381da648b82a840d90a4a6");
-
+			connection = getConnection();
 		} catch (SQLException e) {
 
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
 			return;
 
+		} catch (URISyntaxException e) {
+			System.err.println("probleme d'URI");
+			e.printStackTrace();
 		}
 
 		if (connection != null) {
@@ -74,6 +75,16 @@ public class FirstRestClass {
 		} else {
 			System.out.println("Failed to make connection!");
 		}
+	}
+	
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+	    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+	    String username = dbUri.getUserInfo().split(":")[0];
+	    String password = dbUri.getUserInfo().split(":")[1];
+	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 
 	}
